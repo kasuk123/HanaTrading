@@ -1,0 +1,51 @@
+/* 📁 src/styles/AdminLogin.css */
+
+.admin-login-form-box {
+    background-color: rgba(255, 255, 255, 0.9); /* 투명 흰 박스 */
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 360px; /* ✅ 폼 최대 너비 제한 */
+    text-align: center;
+}
+
+.admin-login-form-box h2 {
+    margin-bottom: 24px;
+    font-size: 22px;
+    color: #333;
+    font-weight: bold;
+}
+
+.admin-login-form-box input {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.admin-login-form-box input:focus {
+    outline: none;
+    border-color: #a7c6f2;
+    box-shadow: 0 0 0 2px rgba(95, 149, 255, 0.3);
+}
+
+.admin-login-form-box button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #6c63ff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admin-login-form-box button:hover {
+    background-color: #524de8;
+}

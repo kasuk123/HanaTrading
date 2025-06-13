@@ -1,0 +1,110 @@
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f8;
+    font-size: 14px;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Sidebar */
+.admin-sidebar {
+    width: 220px;
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-title {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 32px;
+    color: #ecf0f1;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    color: #ecf0f1;
+    font-size: 14px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.2s ease;
+}
+
+.menu-item .icon {
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.menu-item.active {
+    background-color: #3498db;
+    color: #fff;
+}
+
+/* Main Layout */
+.admin-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Header (원래 크기 유지) */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+    height: 60px;
+    box-sizing: border-box;
+}
+
+.admin-welcome {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.logout-btn {
+    font-size: 14px;
+    background-color: transparent;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 4px;
+}
+
+.logout-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* Content (축소 적용 부분) */
+.admin-content {
+    flex: 1;
+    padding: 24px;
+    background-color: #f4f6f8;
+
+    transform: scale(0.95);
+    transform-origin: top left;
+    width: 100%;
+}
