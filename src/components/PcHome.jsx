@@ -1,5 +1,5 @@
 // 📁 src/components/PcHome.jsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -7,11 +7,19 @@ import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { FaCar, FaClipboardCheck, FaGlobe, FaMoneyBillWave } from 'react-icons/fa';
-import EstimateComparePC from './EstimateComparePC';
-import ScrollToTopButton from './ScrollToTopButton';
-import CustomerReviewSliderPC from './CustomerReviewSliderPC'; // ✅ 신규 후기 슬라이더
+import EstimateComparePC from '../components/EstimateComparePC';
+import ScrollToTopButton from '../components/ScrollToTopButton';
+import CustomerReviewSliderPC from '../components/CustomerReviewSliderPC';
+import EstimateAndStatus from '../components/EstimateAndStatus';
 
-function PcHome({ formData, handleChange, handleSubmit }) {
+function PcHome({
+                  formData,
+                  setFormData,
+                  handleChange,
+                  handleSubmit,
+                  inquiryList,
+                  setShowModal
+                }) {
   useEffect(() => {
     AOS.init({ duration: 1000, once: false });
   }, []);
@@ -25,31 +33,31 @@ function PcHome({ formData, handleChange, handleSubmit }) {
 
   const exportCards = [
     {
-      image: '/images/everycar.png',
+      image: '/images/everycar.webp',
       title: '오래된 차량도 OK',
       desc: '연식 무관, 상태만 좋으면 수출\n가능',
       color: 'text-blue-900'
     },
     {
-      image: '/images/scrap.png',
+      image: '/images/scrap.webp',
       title: '폐차 직전 차량도 OK',
       desc: '부품 수출도 인기도 높아요.',
       color: 'text-green-700'
     },
     {
-      image: '/images/condition.png',
+      image: '/images/condition.webp',
       title: '고주행 · LPG · 사고차도 OK',
       desc: '국내 기피 차량도 해외에선\n인기!',
       color: 'text-gray-800'
     },
     {
-      image: '/images/highprice.png',
+      image: '/images/highprice.webp',
       title: '수출은 시세보다 높게',
       desc: '딜러 매입보다 평균 100만원↑',
       color: 'text-yellow-500'
     },
     {
-      image: '/images/fast.png',
+      image: '/images/fast.webp',
       title: '빠른 절차, 빠른 입금',
       desc: '처음부터 끝까지 빠른처리,\n서류 걱정 없이 편하게!',
       color: 'text-orange-600'
@@ -58,21 +66,6 @@ function PcHome({ formData, handleChange, handleSubmit }) {
 
   return (
       <main className="pt-20 bg-white">
-        {/* ✅ 배너 영역 */}
-        <section className="w-full bg-cover bg-center text-white" style={{ backgroundSize: 'cover', backgroundPosition: 'center' }}>
-          <div className="max-w-7xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-10">
-            <div className="flex-1 text-center md:text-right text-[#3e2d1a]">
-              <h2 className="text-2xl md:text-3xl font-extrabold leading-snug drop-shadow-md">
-                20년 외길, <span className="text-[#c3883c]">정직한 중고차 수출</span>의 길만 걸어왔습니다.
-              </h2>
-              <p className="mt-4 text-base md:text-lg font-medium drop-shadow-md">
-                🚗 진심으로 상담하고, 정직하게 매입하며, 투명하게 수출합니다.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ✅ 중고차 수출이란 */}
         <section id="export-info" className="scroll-mt-24 bg-[#f9f9f9] py-16" data-aos="fade-up">
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-2xl md:text-3xl font-extrabold text-center mb-4">
@@ -94,10 +87,8 @@ function PcHome({ formData, handleChange, handleSubmit }) {
           </div>
         </section>
 
-        {/* ✅ 국내 vs 해외 시세 비교 그래프 */}
         <EstimateComparePC />
 
-        {/* ✅ 중고차 수출절차 */}
         <section id="export-steps" className="scroll-mt-24 bg-white py-16 px-4" data-aos="fade-up">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             <span className="text-black">중고차</span>{' '}
@@ -115,9 +106,16 @@ function PcHome({ formData, handleChange, handleSubmit }) {
           </div>
         </section>
 
-        {/* ✅ 새 후기 섹션 (슬라이드형, 3개씩 보임) */}
-        <CustomerReviewSliderPC />
+        <EstimateAndStatus
+            formData={formData}
+            setFormData={setFormData}
+            handleChange={handleChange}
+            inquiryList={inquiryList}
+            handleSubmit={handleSubmit}
+            setShowModal={setShowModal}
+        />
 
+        <CustomerReviewSliderPC />
         <ScrollToTopButton />
       </main>
   );

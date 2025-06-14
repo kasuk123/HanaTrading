@@ -1,3 +1,5 @@
+// 📁 src/components/Header.jsx
+
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -18,6 +20,12 @@ function Header() {
     const section = document.getElementById(id);
     if (section && location.pathname === '/') {
       section.scrollIntoView({ behavior: 'smooth' });
+    } else if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const target = document.getElementById(id);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      }, 300); // 페이지 이동 후 약간의 딜레이
     }
   };
 
@@ -34,7 +42,7 @@ function Header() {
         <div className="flex items-center justify-between px-6 py-2 transform translate-x-1.5">
           {/* ✅ 로고 + 하나무역 */}
           <button onClick={handleLogoClick} className="flex items-center gap-2 focus:outline-none">
-            <img src="/images/logo.png" alt="하나무역 로고" className="w-9 h-9 object-contain" />
+            <img src="/images/logo.webp" alt="하나무역 로고" className="w-9 h-9 object-contain" />
             <span className="text-xl font-bold">
             <span className="text-black">하나</span>
             <span className="text-[#fdd835]">무역</span>

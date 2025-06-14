@@ -7,7 +7,7 @@ const TrustStatementMobile = () => {
     return (
         <section
             className="w-full min-h-[420px] bg-cover bg-center px-6 py-10 text-white"
-            style={{ backgroundImage: "url('/images/trust-banner.png')" }}
+            style={{ backgroundImage: "url('/images/trust-banner.webp')" }}
         >
             {/* ✅ 텍스트만! */}
             <h2 className="text-xl font-semibold mb-4 leading-relaxed drop-shadow-md">

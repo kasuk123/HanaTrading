@@ -10,7 +10,7 @@ export default function MobileHeader() {
             {/* ✅ 로고 + 브랜드명 수평 정렬 (여백 극소화) */}
             <div className="flex items-center gap-[2px]">
                 <img
-                    src="/images/logo.png"
+                    src="/images/logo.webp"
                     alt="하나무역 로고"
                     className="h-14 object-contain"
                 />
