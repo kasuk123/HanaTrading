@@ -2,8 +2,8 @@
 
 import axios from 'axios';
 
-// ✅ 현재 ngrok 백엔드 주소 (8080포트 터널링된 주소)
-axios.defaults.baseURL = 'http://localhost:8080';
+// ✅ 운영용 EC2 백엔드 주소 (8080포트)
+axios.defaults.baseURL = 'http://18.116.149.10:8080'; // ← EC2 퍼블릭 IP 꼭 사용
 
 axios.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');
