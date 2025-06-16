@@ -1,6 +1,7 @@
 // 📁 src/components/EstimateAndStatus.jsx
 import React, { useEffect, useState } from 'react';
 import { FaPhoneAlt, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import axios from 'axios'; // ✅ axios 추가
 
 function EstimateAndStatus({ formData, handleChange, setFormData, inquiryList, setShowModal }) {
     const [isMobile, setIsMobile] = useState(false);
@@ -70,13 +71,12 @@ function EstimateAndStatus({ formData, handleChange, setFormData, inquiryList, s
                 region,
                 agree,
             };
-            await fetch('/api/quotes/apply', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload),
-            });
+
+            // ✅ fetch → axios로 변경
+            await axios.post('/api/quotes/apply', payload);
+
             alert('견적 신청 완료! 잠시 후 상담사가 연락을 드릴 예정입니다.');
-            window.location.reload(); // ✅ 신청 완료 후 새로고침
+            window.location.reload();
         } catch (error) {
             console.error('신청 실패:', error);
             alert('오류가 발생했습니다. 하단 메세지 아이콘을 통해 문의해주세요.');
@@ -101,7 +101,6 @@ function EstimateAndStatus({ formData, handleChange, setFormData, inquiryList, s
     return (
         <section className="w-full py-10 bg-[#f9f9f9] px-4">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-6 justify-center items-start">
-                {/* ✅ 견적 신청 폼 */}
                 <div className="w-full md:w-1/2">
                     <div className="bg-white rounded-xl shadow-md border border-gray-200 p-5">
                         <form onSubmit={handleSubmit} className="space-y-3 text-sm">
@@ -145,7 +144,6 @@ function EstimateAndStatus({ formData, handleChange, setFormData, inquiryList, s
                     </div>
                 </div>
 
-                {/* ✅ 상담현황 박스 */}
                 <div className="w-full md:w-1/2 bg-white rounded-xl shadow-md border border-gray-200 p-5 flex flex-col items-center self-stretch">
                     <h2 className="text-2xl font-bold mb-4 text-center">
                         🚗 <span className="text-black">하나무역</span> <span className="text-yellow-400">상담현황</span>
