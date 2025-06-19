@@ -106,7 +106,7 @@ function CarEstimateFormMobile({ formData, handleChange, setFormData }) {
                 agree: formData.agree,
             };
 
-            await axios.post('/api/apply', payload);
+            await axios.post('/api/quotes/apply', payload);
             alert("견적 신청완료! 잠시 후 상담사가 연락을 드릴 예정입니다.");
             window.location.href = '/';
 
